@@ -1,12 +1,11 @@
 /**
  * @file 10_12.cpp
  * @author Sricharan
- * @brief 
- * @version 0.1
+ * @brief Code to find the maximum length of special substring of a string, that appears thrice within the string
+ *        A string/substring is said to be special if all the characters of the string are the same
+ * @version 1
  * @date 2024-12-10
  * 
- * Code to find the maximum length of special substring of a string, that appears thrice within the string
- * A string/substring is said to be special if all the characters of the string are the same
  */
 #include <iostream>
 using namespace std;
