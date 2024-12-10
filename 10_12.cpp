@@ -3,7 +3,7 @@
  * @author Sricharan
  * @brief Code to find the maximum length of special substring of a string, that appears thrice within the string
  *        A string/substring is said to be special if all the characters of the string are the same
- * @version 2
+ * @version 3
  * @date 2024-12-10
  * 
  */
@@ -11,7 +11,7 @@
 #include <unordered_map>
 using namespace std;
 
-bool isSpecial(string s){
+bool isSpecial(string_view s){
     char c = s[0];
     for (int i = 0; i < s.length(); i++){
         if (c != s[i]){
@@ -23,13 +23,13 @@ bool isSpecial(string s){
 }
 
 int maximumLength(string s){
-    unordered_map <string, int> substrcol;
+    unordered_map <string_view, int> substrcol;
     int len = s.length();
     int flen = -1;
 
     for(int i = 1; i < len; i++){
         for (int j = 0; j < len - i + 1; j++){
-            string sub = s.substr(j, i);
+            string_view sub(s.data() + j, i);
             if (i == 1 || isSpecial(sub)){
                 substrcol[sub]++;
                 if (substrcol[sub] == 3){
