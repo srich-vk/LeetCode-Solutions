@@ -1,12 +1,11 @@
 /**
- * @file 11_12.cpp
+ * @file 12_12.cpp
  * @author Sricharan
- * @brief To find the maximum beauty of an array after applying certain operations to it
- * The operation is:
- *      Given an integer k, replace the element at nums[i] with any number btw nums[i]+k and nums[i]-k
- * The beauty of an array is defined as the maximum number m such that there are m identical elements in the array
- * @version 1
- * @date 2024-12-11
+ * @brief Given an integer array and an integer k, do the following operations
+ * The operation is, choose the maximum element of the array and replace it with its square root.
+ * Do the operation k times, and then return the sum of elements remaining 
+ * @version 2
+ * @date 2024-12-12
  * 
  * @copyright Copyright (c) 2024
  * 
@@ -14,30 +13,30 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <cmath>
+#include <queue>
 using namespace std;
 
-void vectorPrint(vector<int>& v){
-    for(int i = 0; i < v.size(); i++){
-        cout << v[i] << " ";
+long long pickGifts(vector<int>& gifts, int k) {
+    long long sum = 0;
+    int first = 0;
+    priority_queue<int> pq;
+    for(int i = 0; i < gifts.size(); i++){
+        pq.push(gifts[i]);
+        sum += gifts[i];
     }
-    cout << endl;
-}
+    for(int i = 0; i < k; i++){
+        int new_var = sqrt(pq.top());
+        sum -= pq.top() - new_var;
+        pq.pop();
+        pq.push(new_var);
+    }
 
-int maximumBeauty(vector<int>& nums, int k){
-    sort(nums.begin(), nums.end());
-    int res = 0, left = 0;
-    for (int right = 0; right < nums.size(); right++){
-        while (nums[right] - nums[left] > 2*k){
-            left++;
-        }
-        res = max(res, right - left + 1);
-    }
-    return res;
+    return sum;
 }
 
 int main(){
-    vector<int> v = {4,6,2,1};
-    int k = 2;
-    cout << maximumBeauty(v, k);
+    vector<int> v = {25,64,9,4,100};
+    int k = 4;
+    cout << pickGifts(v, k);
 }
