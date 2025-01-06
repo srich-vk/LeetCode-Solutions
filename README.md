@@ -8,3 +8,6 @@ LeetCode Problems
    * The operation is:
    *     Given an integer k, replace the element at nums[i] with any number btw nums[i]+k and nums[i]-k
    * The beauty of an array is defined as the maximum number m such that there are m identical elements in the array
+
+6/1/25: Given a string of 0's and 1's, representing the no. of objects in a series of boxes, for each box find the minimum number of shifts required to put all the objects in that box.
+   * A shift can take place only between adjacent boxes.
